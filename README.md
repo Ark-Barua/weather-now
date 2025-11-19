@@ -13,8 +13,8 @@ It provides current weather, 7-day daily forecasts, hourly breakdowns, seamless 
 
 ## 📸 Screenshots
 
-| Home Screen               | Hourly Forecast              | Daily Forecast                |
-|---------------------------|------------------------------|-------------------------------|
+| Home Screen                           | Hourly Forecast                          | Daily Forecast                         |
+|---------------------------------------|------------------------------------------|----------------------------------------|
 | ![Home](assets/screenshots/home.png)  | ![Hourly](assets/screenshots/hourly.png) | ![Daily](assets/screenshots/daily.png) |
 
 ---
@@ -86,6 +86,7 @@ weather-now/
 ## 🔧 Setup & Usage
 
 1. **Clone the repo**
+- git clone https://github.com/Ark-Barua/weather-now
 
 2. **Open the project**
 - Just open `index.html` in your browser — no server required.
