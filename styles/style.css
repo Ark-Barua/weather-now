@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@8..100,400;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,700&display=swap");
+
+      :root {
+        --bg-dark: #090d20;
+        --card-dark: #171b31;
+        --main-text: #ffffff;
+        --secondary-text: #a0aec0;
+        --accent-purple: #5346e9;
+        --accent-orange: #ffab4c;
+      }
+
+      body {
+        background-color: var(--bg-dark);
+        color: var(--main-text);
+        font-family: "DM Sans", sans-serif;
+        min-height: 100vh;
+      }
+      h1,
+      h2 {
+        font-family: "Bricolage Grotesque", sans-serif;
+      }
+
+      /* Custom Scrollbar for hourly forecast to match dark theme */
+      .custom-scroll::-webkit-scrollbar {
+        width: 6px;
+      }
+      .custom-scroll::-webkit-scrollbar-track {
+        background: var(--card-dark);
+      }
+      .custom-scroll::-webkit-scrollbar-thumb {
+        background: #2d3748; /* Slightly lighter dark */
+        border-radius: 3px;
+      }
+      .custom-scroll::-webkit-scrollbar-thumb:hover {
+        background: #4a5568;
+      }
+
+      /* Gradient for the main weather card */
+      .main-weather-gradient {
+        background: linear-gradient(135deg, #4a35c0, #673ab7);
+      }
+
+      /* Styling for the focused search input */
+      #search-input:focus {
+        box-shadow: 0 0 0 2px var(--accent-purple);
+      }

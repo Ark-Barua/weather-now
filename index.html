@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Now Dashboard</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles/style.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "bg-dark": "var(--bg-dark)",
+              "card-dark": "var(--card-dark)",
+              "accent-purple": "var(--accent-purple)",
+              "accent-orange": "var(--accent-orange)",
+              "secondary-text": "var(--secondary-text)",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body>
+    <!-- App Container -->
+    <div id="app" class="p-4 md:p-10 max-w-7xl mx-auto">
+      <!-- Header -->
+      <header class="flex justify-between items-center mb-10">
+        <div class="flex items-center space-x-2">
+          <!-- Sun Icon SVG (Logo) -->
+          <!-- Using a simple placeholder as assets/logo.svg is not available -->
+          <svg
+            class="w-8 h-8 text-accent-orange"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="12" cy="12" r="6" fill="currentColor"></circle>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 4v-2m0 20v-2m-8-8h2m18 0h-2m-2.828-5.657l1.414-1.414m-14.142 14.142l1.414-1.414m11.314-11.314l-1.414 1.414m-11.314 11.314l-1.414 1.414"
+            ></path>
+          </svg>
+          <span class="text-xl font-bold font-[Bricolage_Grotesque]"
+            >Weather Now</span
+          >
+        </div>
+
+        <!-- Units Dropdown -->
+        <div class="relative">
+          <button
+            id="units-toggle"
+            class="flex items-center gap-2 px-4 py-2 bg-card-dark rounded-xl text-sm font-semibold hover:bg-opacity-80 transition focus:outline-none focus:ring-2 focus:ring-accent-purple"
+          >
+            <!-- Using SVG for icon-units placeholder -->
+            <svg
+              class="w-4 h-4 text-secondary-text"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 16v-1a4 4 0 014-4h8a4 4 0 014 4v1m-6-4l-3-3m0 0l-3 3m3-3v12"
+              ></path>
+            </svg>
+
+            <span>Units</span>
+
+            <!-- FIX: Added ID for JS arrow rotation logic -->
+            <svg
+              id="units-arrow"
+              class="w-4 h-4 transform transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              ></path>
+            </svg>
+          </button>
+
+          <!-- Dropdown Content -->
+          <div
+            id="units-dropdown"
+            class="absolute right-0 mt-2 w-72 bg-card-dark rounded-xl shadow-2xl z-20 hidden"
+          >
+            <!-- Units Content will be rendered here by JS -->
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Heading -->
+      <h1
+        id="main-title"
+        class="text-3xl sm:text-4xl md:text-5xl font-bold font-[Bricolage_Grotesque] mb-10 md:mb-12"
+      >
+        How's the sky looking today?
+      </h1>
+
+      <!-- Search Bar and Results -->
+      <div
+        class="flex flex-col md:flex-row items-start md:space-x-4 mb-10 relative"
+      >
+        <div class="flex w-full md:w-2/3 relative">
+          <!-- Search Input -->
+          <div class="relative w-full">
+            <input
+              type="text"
+              id="search-input"
+              value="Pune"
+              placeholder="Search for a place..."
+              class="w-full pl-12 pr-4 py-3 bg-card-dark rounded-xl focus:ring-2 focus:ring-accent-purple focus:outline-none transition placeholder-secondary-text text-lg"
+            />
+            <!-- Search Icon SVG -->
+            <svg
+              class="w-6 h-6 absolute left-4 top-1/2 transform -translate-y-1/2 text-secondary-text"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              ></path>
+            </svg>
+          </div>
+
+          <!-- Search Results Dropdown (City Names) -->
+          <div
+            id="search-results-dropdown"
+            class="absolute w-full top-full mt-2 bg-card-dark rounded-xl shadow-2xl z-10 hidden"
+          >
+            <!-- Results will be rendered here by JS -->
+          </div>
+        </div>
+        <!-- Search Button -->
+        <button
+          id="search-button"
+          class="mt-4 md:mt-0 w-full md:w-1/3 max-w-xs md:max-w-none px-6 py-3 bg-accent-purple text-lg font-semibold rounded-xl hover:bg-opacity-80 transition focus:outline-none focus:ring-2 focus:ring-accent-purple"
+        >
+          Search
+        </button>
+      </div>
+
+      <!-- Main Content Area (Conditional Rendering based on uiState) -->
+      <div id="weather-content" class="md:grid md:grid-cols-3 md:gap-8">
+        <!-- Content will be rendered here by JavaScript -->
+      </div>
+
+      <!-- Hidden Templates for rendering -->
+      <template id="template-main-content">
+        <div class="col-span-3 md:col-span-2">
+          <!-- Main Weather Card -->
+          <div
+            class="main-weather-gradient p-6 sm:p-8 rounded-2xl shadow-xl mb-8 flex flex-col sm:flex-row justify-between items-start relative overflow-hidden"
+          >
+            <div>
+              <p id="main-city" class="text-3xl sm:text-4xl font-bold mb-1"></p>
+              <p id="main-date" class="text-secondary-text text-sm mb-4"></p>
+            </div>
+            <div class="flex items-center space-x-4 mt-4 sm:mt-0">
+              <div
+                id="main-icon-container"
+                class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center"
+              >
+                <!-- Weather Icon SVG will be injected -->
+              </div>
+              <p
+                id="main-temp"
+                class="text-6xl sm:text-8xl font-bold font-[Bricolage_Grotesque]"
+              ></p>
+            </div>
+            <div
+              class="absolute inset-0 overflow-hidden pointer-events-none rounded-2xl"
+            >
+              <!-- Decorative Orbs matching design -->
+              <div
+                class="absolute w-12 h-12 bg-white bg-opacity-20 rounded-full top-4 left-4 blur-xl"
+              ></div>
+              <div
+                class="absolute w-16 h-16 bg-accent-orange bg-opacity-30 rounded-full bottom-8 left-16 blur-xl"
+              ></div>
+              <div
+                class="absolute w-10 h-10 bg-white bg-opacity-20 rounded-full top-1/3 right-1/4 blur-xl"
+              ></div>
+              <div
+                class="absolute w-20 h-20 bg-accent-purple bg-opacity-40 rounded-full bottom-4 right-4 blur-xl"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Detail Cards -->
+          <div id="detail-cards-container" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="p-4 bg-card-dark rounded-xl">
+              <p class="text-secondary-text text-sm mb-2">Feels Like</p>
+              <p id="detail-feelslike" class="text-2xl font-bold"></p>
+            </div>
+            <div class="p-4 bg-card-dark rounded-xl">
+              <p class="text-secondary-text text-sm mb-2">Humidity</p>
+              <p id="detail-humidity" class="text-2xl font-bold"></p>
+            </div>
+            <div class="p-4 bg-card-dark rounded-xl">
+              <p class="text-secondary-text text-sm mb-2">Wind</p>
+              <p id="detail-wind" class="text-2xl font-bold"></p>
+            </div>
+            <div class="p-4 bg-card-dark rounded-xl">
+              <p class="text-secondary-text text-sm mb-2">Precipitation</p>
+              <p id="detail-precip" class="text-2xl font-bold"></p>
+            </div>
+          </div>
+
+          <!-- Daily Forecast -->
+          <h2 class="text-xl font-bold mb-4 font-[Bricolage_Grotesque]">
+            Daily forecast
+          </h2>
+          <div
+            id="daily-forecast-container"
+            class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-4"
+          >
+            <!-- Daily forecast items will be rendered here -->
+          </div>
+        </div>
+
+        <!-- Hourly Forecast Sidebar -->
+        <div class="col-span-3 md:col-span-1 mt-8 md:mt-0">
+          <div class="bg-card-dark p-4 sm:p-6 rounded-2xl">
+            <div class="flex justify-between items-center mb-4">
+              <h2 class="text-xl font-bold font-[Bricolage_Grotesque]">
+                Hourly forecast
+              </h2>
+              <div class="relative">
+                <button
+                  id="hourly-day-toggle"
+                  class="flex items-center px-3 py-1 bg-bg-dark rounded-lg text-sm font-semibold hover:bg-opacity-80 transition focus:outline-none focus:ring-2 focus:ring-accent-purple"
+                >
+                  <span id="hourly-day-text">Today</span>
+                  <svg
+                    class="w-4 h-4 ml-1 transform transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </button>
+                <div
+                  id="hourly-day-dropdown"
+                  class="absolute right-0 mt-2 w-32 bg-card-dark rounded-xl shadow-2xl z-20 hidden"
+                >
+                  <!-- Day selection will be rendered here -->
+                </div>
+              </div>
+            </div>
+            <div
+              id="hourly-forecast-container"
+              class="space-y-3 max-h-[50vh] md:max-h-[60vh] overflow-y-auto custom-scroll pr-2"
+            >
+              <!-- Hourly forecast items will be rendered here -->
+            </div>
+          </div>
+        </div>
+      </template>
+
+      <!-- Template for No Results State -->
+      <template id="template-no-results">
+        <div
+          class="col-span-3 flex flex-col items-center justify-center text-center py-20"
+        >
+          <h2 class="text-2xl font-bold mb-2 font-[Bricolage_Grotesque]">
+            No search result found!
+          </h2>
+          <p class="text-secondary-text">
+            Try searching for a different city or location.
+          </p>
+        </div>
+      </template>
+
+      <!-- Template for API Error State -->
+      <template id="template-error">
+        <div
+          class="col-span-3 flex flex-col items-center justify-center text-center py-20"
+        >
+          <!-- No Entry Sign SVG -->
+          <svg
+            class="w-16 h-16 mb-4 text-red-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+          </svg>
+          <h2 class="text-2xl font-bold mb-2 font-[Bricolage_Grotesque]">
+            Something went wrong
+          </h2>
+          <p class="text-secondary-text mb-4">
+            We couldn't connect to the server (API error). Please try again in a
+            few moments.
+          </p>
+          <button
+            id="retry-button"
+            class="px-6 py-2 bg-accent-purple text-sm font-semibold rounded-xl hover:bg-opacity-80 transition focus:outline-none focus:ring-2 focus:ring-accent-purple flex items-center"
+          >
+            <svg
+              class="w-4 h-4 mr-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 4v5h.582m15.428 5v-5h-.582M21 12a9 9 0 11-18 0"
+              ></path>
+            </svg>
+            Retry
+          </button>
+        </div>
+      </template>
+
+      <!-- Template for Loading State -->
+      <template id="template-loading">
+        <div
+          class="col-span-3 flex flex-col items-center justify-center text-center py-20"
+        >
+          <!-- Loading Animation -->
+          <div class="flex space-x-2 justify-center items-center">
+            <div
+              class="h-2 w-2 bg-white rounded-full animate-pulse [animation-delay:-0.3s]"
+            ></div>
+            <div
+              class="h-2 w-2 bg-white rounded-full animate-pulse [animation-delay:-0.15s]"
+            ></div>
+            <div class="h-2 w-2 bg-white rounded-full animate-pulse"></div>
+          </div>
+          <p class="mt-4 text-lg">Loading...</p>
+        </div>
+      </template>
+    </div>
+
+    <script src="scripts/app.js" defer></script>
+  </body>
+</html>
