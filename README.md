@@ -1,5 +1,15 @@
 # 🌤️ Weather Now — Modern Weather Dashboard
 
+![Status](https://img.shields.io/badge/Status-Active-brightgreen)
+![HTML](https://img.shields.io/badge/HTML-5-orange?logo=html5)
+![CSS](https://img.shields.io/badge/CSS-TailwindCSS-blue?logo=tailwindcss)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow?logo=javascript)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Last Commit](https://img.shields.io/github/last-commit/Ark-Barua/weather-now)
+![Repo Size](https://img.shields.io/github/repo-size/Ark-Barua/weather-now)
+![Stars](https://img.shields.io/github/stars/Ark-Barua/weather-now?style=social)
+
+
 A beautifully designed, real-time weather dashboard built with HTML, JavaScript, and TailwindCSS, powered by the Open-Meteo API.  
 It provides current weather, 7-day daily forecasts, hourly breakdowns, seamless unit switching, and a smooth, modern UI.
 
@@ -13,9 +23,9 @@ It provides current weather, 7-day daily forecasts, hourly breakdowns, seamless 
 
 ## 📸 Screenshots
 
-| Home Screen                                 | Hourly Forecast                                  | Daily Forecast                                 |
-|---------------------------------------------|--------------------------------------------------|------------------------------------------------|
-| ![Home](assets/screenshots/homescreen.png)  | ![Hourly](assets/screenshots/hourlyforecast.png) | ![Daily](assets/screenshots/dailyforecast.png) |
+| Home Screen                                    | Hourly Forecast                                     | Daily Forecast                                    |
+|------------------------------------------------|-----------------------------------------------------|---------------------------------------------------|
+| ![Home](assets/screenshots/home%20screen.png)  | ![Hourly](assets/screenshots/hourly%20forecast.png) | ![Daily](assets/screenshots/daily%20forecast.png) |
 
 ---
 
