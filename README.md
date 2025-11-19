@@ -13,9 +13,9 @@ It provides current weather, 7-day daily forecasts, hourly breakdowns, seamless 
 
 ## 📸 Screenshots
 
-| Home Screen                           | Hourly Forecast                          | Daily Forecast                         |
-|---------------------------------------|------------------------------------------|----------------------------------------|
-| ![Home](assets/screenshots/home.png)  | ![Hourly](assets/screenshots/hourly.png) | ![Daily](assets/screenshots/daily.png) |
+| Home Screen                                 | Hourly Forecast                                  | Daily Forecast                                 |
+|---------------------------------------------|--------------------------------------------------|------------------------------------------------|
+| ![Home](assets/screenshots/homescreen.png)  | ![Hourly](assets/screenshots/hourlyforecast.png) | ![Daily](assets/screenshots/dailyforecast.png) |
 
 ---
 
