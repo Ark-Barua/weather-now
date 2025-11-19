@@ -17,7 +17,7 @@ It provides current weather, 7-day daily forecasts, hourly breakdowns, seamless 
 
 ## 🚀 Live Demo
 
-> [Your live demo link here (optional)]  
+> [Live Demo](https://liveweather-project.netlify.app/)
 
 ---
 
